@@ -7,7 +7,6 @@ export default function BasicExample() {
     const profanity = new Profanity({
         customWords: ['saidev'],
         excludeFields: ['email'],
-        skipApi: false,
       });
       const {
         register,
