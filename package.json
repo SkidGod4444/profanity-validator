@@ -1,0 +1,54 @@
+{
+  "name": "profanity-validator",
+  "version": "1.0.0",
+  "description": "Profanity validation for React forms with react-hook-form & profanity.dev support",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest",
+    "prepublish": "npm run test && npm run build"
+  },
+  "keywords": [
+    "profanity",
+    "validation",
+    "react",
+    "react-hook-form",
+    "form"
+  ],
+  "author": "Saidev Dhal",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@testing-library/jest-dom": "^6.6.2",
+    "@testing-library/react": "^16.0.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.8.1",
+    "@types/react": "^18.3.12",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "rollup": "^4.24.0",
+    "ts-jest": "^29.2.5",
+    "tslib": "^2.8.0",
+    "typescript": "^5.6.3"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-hook-form": "^7.53.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SkidGod4444/profanity-validator"
+  },
+  "bugs": {
+    "url": "https://github.com/SkidGod4444/profanity-validator/issues"
+  },
+  "homepage": "https://github.com/SkidGod4444/profanity-validator#readme"
+}
