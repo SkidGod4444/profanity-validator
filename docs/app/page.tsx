@@ -1,9 +1,8 @@
 "use client";
 
 import { Icons } from "@/components/custom/Icons";
-import { Button } from "@/components/ui/button";
 import HeroVideoDialog from "@/components/ui/hero-video-dialog";
-import { Copy, Github, Heart, Twitter, Youtube } from "lucide-react";
+import { Github, Heart, Twitter, Youtube } from "lucide-react";
 
 export default function Home() {
   return (
