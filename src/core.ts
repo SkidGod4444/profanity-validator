@@ -31,7 +31,7 @@ export class Profanity {
         if(data){
           if(this.config.heat! <= data.score) {
             hasProfanity = data.isProfanity;
-            profaneWords = data.flaggedFor;
+            profaneWords = Array.isArray(data.flaggedFor) ? data.flaggedFor : [data.flaggedFor];
           } else {
             hasProfanity = false;
             profaneWords = [];

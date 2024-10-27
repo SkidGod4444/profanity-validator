@@ -1,7 +1,7 @@
 {
   "name": "profanity-validator",
-  "version": "1.0.0",
-  "description": "Profanity validation for React forms with react-hook-form & profanity.dev support",
+  "version": "1.3.3",
+  "description": "Profanity validation for React forms with react-hook-form & zod supported",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -11,14 +11,16 @@
   "scripts": {
     "build": "rollup -c",
     "test": "jest",
-    "prepublish": "npm run test && npm run build"
+    "pre-publish": "npm run test && npm run build"
   },
   "keywords": [
     "profanity",
     "validation",
     "react",
     "react-hook-form",
-    "form"
+    "form",
+    "profanity-validator",
+    "profanity-guard"
   ],
   "author": "Saidev Dhal",
   "license": "MIT",
@@ -50,9 +52,5 @@
   "bugs": {
     "url": "https://github.com/SkidGod4444/profanity-validator/issues"
   },
-  "homepage": "https://github.com/SkidGod4444/profanity-validator#readme",
-  "dependencies": {
-    "node-fetch": "^3.3.2",
-    "whatwg-fetch": "^3.6.20"
-  }
+  "homepage": "https://github.com/SkidGod4444/profanity-validator#readme"
 }
