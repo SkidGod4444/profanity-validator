@@ -1,27 +1,21 @@
 import { ProfanityConfig } from "./types";
-
 export class Profanity {
     private config: ProfanityConfig;
   
     constructor(config: ProfanityConfig = {}) {
       this.config = {
-        apiEndpoint: 'https://vector.profanity.dev',
-        apiHeaders: { 'Content-Type': 'application/json' },
-        skipApi: false,
         excludeFields: [],
+        heat: 0.909,
         ...config
       };
     }
   
     private async checkApi(text: string): Promise<{ isProfane: boolean; words: string[] }> {
-      if (this.config.skipApi) return { isProfane: false, words: [] };
       
       try {
-        const response = await fetch(this.config.apiEndpoint!, {
+        const response = await fetch('https://vector.profanity.dev', {
           method: 'POST',
-          headers: {
-            ...this.config.apiHeaders,
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: text }),
         });
   
@@ -30,9 +24,23 @@ export class Profanity {
         }
   
         const data = await response.json();
+
+        let hasProfanity = false;
+        let profaneWords = [];
+
+        if(data){
+          if(this.config.heat! <= data.score) {
+            hasProfanity = data.isProfanity;
+            profaneWords = data.flaggedFor;
+          } else {
+            hasProfanity = false;
+            profaneWords = [];
+          }
+        }
+
         return {
-          isProfane: data.hasProfanity,
-          words: data.profaneWords || []
+          isProfane: hasProfanity,
+          words: profaneWords,
         };
       } catch (error) {
         console.error('API check failed:', error);
@@ -54,33 +62,34 @@ export class Profanity {
       };
     }
   
-    async validateField(value: string): Promise<true | string> {
-      if (typeof value !== 'string') return true;
-  
+    async validateField(value: string): Promise<{ isValid: boolean; message?: string }> {
+      if (typeof value !== 'string') {
+        throw new Error("Field value must be a string");
+      }
+    
       const customCheck = this.checkCustomWords(value);
       const apiCheck = await this.checkApi(value);
-  
+    
       const detectedWords = Array.from(new Set([
         ...customCheck.words,
         ...apiCheck.words
       ]));
-  
+    
       if (customCheck.isProfane || apiCheck.isProfane) {
-        return `Inappropriate content detected: ${detectedWords.join(', ')}`;
+        return { isValid: false, message: `Content flagged for: ${detectedWords.join(', ')}` };
       }
-  
-      return true;
+    
+      return { isValid: true };
     }
+    
   
     createValidator(fieldName: string) {
       if (this.config.excludeFields?.includes(fieldName)) {
         return undefined;
       }
-  
       return async (value: string) => {
         const result = await this.validateField(value);
-        return result === true ? true : result;
+        return result;
       };
     }
   }
-  

@@ -50,5 +50,9 @@
   "bugs": {
     "url": "https://github.com/SkidGod4444/profanity-validator/issues"
   },
-  "homepage": "https://github.com/SkidGod4444/profanity-validator#readme"
+  "homepage": "https://github.com/SkidGod4444/profanity-validator#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "whatwg-fetch": "^3.6.20"
+  }
 }

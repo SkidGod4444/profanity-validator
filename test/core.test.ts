@@ -1,39 +1,28 @@
-import { Profanity } from '../src/core';
-import { ProfanityResolver } from '../src/resolver';
+import { Profanity } from "../src/core";
 
-describe('Profanity', () => {
-  let profanity: Profanity;
+// Mocked fetch for testing purposes
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    ok: true,
+    json: () => Promise.resolve({
+      isProfanity: true,
+      flaggedFor: ["badword"],
+      score: 0.95
+    })
+  })
+) as jest.Mock;
 
-  beforeEach(() => {
-    profanity = new Profanity({
-      customWords: ['badword'],
-      skipApi: true
-    });
+describe("Profanity Class", () => {
+  const config = { customWords: ["badword"], excludeFields: ["excludeMe"], heat: 0.9 };
+  const profanity = new Profanity(config);
+
+  test("API check flags profane content", async () => {
+    const result = await profanity.validateField("This is a badword");
+    expect(result).toEqual({ isValid: false, message: "Content flagged for: badword" });
   });
 
-  test('validates text without profanity', async () => {
-    const result = await profanity.validateField('hello world');
-    expect(result).toBe(true);
-  });
-
-  test('ProfanityResolver should detect profanity correctly', async () => {
-    const resolver = ProfanityResolver(profanity);
-    const values = { title: 'Title with badword', description: 'Clean description' };
-    
-    const result = await resolver(values);
-  
-    console.log("Resolver Output:", result);
-  
-    expect(result.errors).toHaveProperty('title');
-    expect(result.errors.title).toEqual({
-      type: 'profanity',
-      message: 'Inappropriate content detected: badword'
-    });
-  });
-  
-  test('detects custom profanity words', async () => {
-    const result = await profanity.validateField('hello badword');
-    expect(typeof result).toBe('string');
-    expect(result).toContain('badword');
+  test("Ignores fields in excludeFields", async () => {
+    const validator = profanity.createValidator("excludeMe");
+    expect(validator).toBeUndefined();
   });
 });

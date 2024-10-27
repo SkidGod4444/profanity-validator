@@ -1,14 +1,12 @@
 export interface ProfanityConfig {
     customWords?: string[];
-    apiEndpoint?: string;
-    apiHeaders?: Record<string, string>;
-    skipApi?: boolean;
+    heat?: number;
     excludeFields?: string[];
   }
   
   export interface ValidationError {
     field: string;
-    message: string;
+    message: React.ReactNode | string;
     detectedWords: string[];
   }
   
