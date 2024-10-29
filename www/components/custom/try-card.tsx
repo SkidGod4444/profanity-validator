@@ -24,6 +24,12 @@ import {
 } from "@/components/ui/tooltip";
 import { toast } from "sonner";
 
+type FormData = {
+  name: string;
+  framework: string;
+  desc: string;
+};
+
 export default function TryCard() {
   const [heat, setHeat] = useState(0.8);
   const [excluded, setExclude] = useState<string[] | undefined>(["name"]);
@@ -39,14 +45,10 @@ export default function TryCard() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<FormData>({
     resolver: ProfanityResolver(profanityInit),
   });
-  const onSubmit = async (data: {
-    name: string;
-    framework: string;
-    desc: string;
-  }) => {
+  const onSubmit = async (data: { name: string; framework: string; desc: string }) => {
     toast(
       `Name: ${data.name}, Framework: ${data.framework}, Desc: ${data.desc}`,
     );
@@ -186,7 +188,7 @@ export default function TryCard() {
                 />
                 {errors.name && (
                   <div className="text-red-500 text-sm">
-                    {errors.name.message}
+                    {String(errors.name.message)}
                   </div>
                 )}
               </div>
@@ -201,7 +203,7 @@ export default function TryCard() {
                 />
                 {errors.framework && (
                   <div className="text-red-500 text-sm">
-                    {errors.framework.message}
+                    {String(errors.framework.message)}
                   </div>
                 )}
               </div>
@@ -217,7 +219,7 @@ export default function TryCard() {
                 />
                 {errors.desc && (
                   <div className="text-red-500 text-sm">
-                    {errors.desc.message}
+                    {String(errors.desc.message)}
                   </div>
                 )}
               </div>
