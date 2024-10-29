@@ -22,15 +22,17 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { toast } from "sonner";
 
 export default function TryCard() {
   const [heat, setHeat] = useState(0.8);
-  const [cwords, setCwords] = useState([""]);
+  const [excluded, setExclude] = useState<string[] | undefined>(["name"]);
+  const [cwords, setCwords] = useState<string[] | undefined>(["to-do"]);
 
   const profanityInit = new Profanity({
     heat: heat,
     customWords: cwords,
-    excludeFields: [],
+    excludeFields: excluded,
   });
 
   const {
@@ -40,9 +42,14 @@ export default function TryCard() {
   } = useForm({
     resolver: ProfanityResolver(profanityInit),
   });
-  const onSubmit = async (data: unknown) => {
-    // Only called if no profanity is detected
-    console.log("Clean data:", data);
+  const onSubmit = async (data: {
+    name: string;
+    framework: string;
+    desc: string;
+  }) => {
+    toast(
+      `Name: ${data.name}, Framework: ${data.framework}, Desc: ${data.desc}`,
+    );
   };
 
   return (
@@ -97,7 +104,8 @@ export default function TryCard() {
               </TooltipProvider>
             </div>
             <Textarea
-              placeholder="Separate your words using , between them."
+              placeholder="Separate your words using ',' between them."
+              defaultValue={"todo"}
               onChange={(e) => {
                 const value = e.target.value;
                 const valuesArray =
@@ -129,8 +137,15 @@ export default function TryCard() {
             <Input
               type="text"
               placeholder="Try framework, desc or name."
-              defaultValue={"Coming soon!"}
-              disabled
+              defaultValue={"name"}
+              onChange={(e) => {
+                const value = e.target.value;
+                const valuesArray =
+                  value.includes(" ") || value.includes(",")
+                    ? value.split(/[\s,]+/)
+                    : [value];
+                setExclude(valuesArray);
+              }}
             />
           </div>
         </CardContent>
@@ -166,11 +181,12 @@ export default function TryCard() {
                   id="name"
                   type="text"
                   placeholder="Name of your project"
+                  defaultValue={"100x Todo App"}
                   {...register("name")}
                 />
                 {errors.name && (
                   <div className="text-red-500 text-sm">
-                    {String(errors.name.message)}
+                    {errors.name.message}
                   </div>
                 )}
               </div>
@@ -180,11 +196,12 @@ export default function TryCard() {
                   id="framework"
                   type="text"
                   placeholder="Name of your project"
+                  defaultValue={"Boobs Js"}
                   {...register("framework")}
                 />
                 {errors.framework && (
                   <div className="text-red-500 text-sm">
-                    {String(errors.framework.message)}
+                    {errors.framework.message}
                   </div>
                 )}
               </div>
@@ -192,12 +209,15 @@ export default function TryCard() {
                 <Label htmlFor="desc">Description</Label>
                 <Textarea
                   id="desc"
+                  defaultValue={
+                    "Am a software developer who just codes to-do apps all day."
+                  }
                   placeholder="Type your message here."
                   {...register("desc")}
                 />
                 {errors.desc && (
                   <div className="text-red-500 text-sm">
-                    {String(errors.desc.message)}
+                    {errors.desc.message}
                   </div>
                 )}
               </div>

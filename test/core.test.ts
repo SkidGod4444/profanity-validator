@@ -21,6 +21,11 @@ describe("Profanity Class", () => {
     expect(result).toEqual({ isValid: false, message: "Content flagged for: badword" });
   });
 
+  test("Detect empty string value and return valid", async () => {
+    const result = await profanity.validateField("");
+    expect(result).toEqual({ isValid: true, message: 'Value is empty' });
+  });
+
   test("Ignores fields in excludeFields", async () => {
     const validator = profanity.createValidator("excludeMe");
     expect(validator).toBeUndefined();

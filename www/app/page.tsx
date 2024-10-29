@@ -1,4 +1,3 @@
-
 import { Icons } from "@/components/custom/Icons";
 import HeroVideoDialog from "@/components/ui/hero-video-dialog";
 import { Github, Heart, Twitter, Youtube } from "lucide-react";
@@ -159,11 +158,9 @@ export default function Home() {
           <TryCard />
         </div>
         <p className="text-center mx-auto mt-8 text-lg max-w-xl text-balance">
-          <span className="font-semibold">Heads up!</span> We know{" "}
-          <span className="px-2 bg-red-500 text-white">v1.3.3</span>
-          {""} is a bit buggy, but don&apos;t worry,{" "}
-          <span className="px-2 bg-red-500 text-white">v1.3.5</span>
-          {""} is on it&apos;s way!
+          A small contribution to the{" "}
+          <span className="px-2 bg-red-500 text-white">open-source</span>{" "}
+          community!
         </p>
       </section>
 

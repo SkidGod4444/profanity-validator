@@ -1,7 +1,8 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/custom/navbar";
+import { Toaster } from "@/components/ui/sonner";
 
 const usefont = Bricolage_Grotesque({ subsets: ["latin"] });
 
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   description: "Profanity SDK made by Saidev Dhal",
   keywords: [
     "profanity api",
-    "profanity.dev", 
+    "profanity.dev",
     "profanity validator",
     "swear word",
     "react hook form",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     "zod",
     "zod validator",
     "zod resolver",
-    "profanity resolver"
+    "profanity resolver",
   ],
   authors: [
     {
@@ -57,10 +58,6 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = {
-  maximumScale: 1, // Disable auto-zoom on mobile Safari, credit to https://github.com/ai-ng
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -71,6 +68,7 @@ export default function RootLayout({
       <body className={usefont.className}>
         <Navbar />
         <div className="flex h-screen w-full">{children}</div>
+        <Toaster />
       </body>
     </html>
   );

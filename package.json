@@ -1,6 +1,6 @@
 {
   "name": "profanity-validator",
-  "version": "1.3.3",
+  "version": "1.3.6",
   "description": "Profanity validation for React forms with react-hook-form & zod supported",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
