@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description: "Profanity SDK made by Saidev Dhal",
     images: [
       {
-        url: "https://i.imgur.com/ffeIgzW.png",
+        url: "https://i.imgur.com/KCJmPOa.png",
         width: 1200,
         height: 627,
         alt: "Fast, Open-Source Profanity Validator",
