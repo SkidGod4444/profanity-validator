@@ -1,6 +1,6 @@
 export const dynamicLinks = {
-  example1: "https://www.facebook.com",
-  example2: "https://www.twitter.com",
-  example3: "https://www.linkedin.com",
-  example4: "https://www.instagram.com",
+  example1: "https://github.com/SkidGod4444/profanity-validator/blob/main/www/components/custom/examples/example1.tsx",
+  example2: "https://github.com/SkidGod4444/profanity-validator/blob/main/www/components/custom/examples/example2.tsx",
+  example3: "https://github.com/SkidGod4444/profanity-validator/blob/main/www/components/custom/examples/example3.tsx",
+  example4: "https://github.com/SkidGod4444/profanity-validator/blob/main/www/components/custom/examples/example4.tsx",
 };
