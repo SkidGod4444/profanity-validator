@@ -1,6 +1,6 @@
 # profanity-validator
 
-![Profanity Validator](https://i.imgur.com/KCJmPOa.png) <!-- Replace with actual image path -->
+[![Profanity Validator](https://i.imgur.com/KCJmPOa.png)](https://www.youtube.com/watch?v=WVCBLilL0mQ) <!-- Replace with actual image path and YouTube video link -->
 
 A lightweight SDK for profanity filtering in forms. This library is designed to prevent bad word spam by validating user input and throwing errors if profanity is detected. Built to be flexible, it can be integrated easily into any HTML or JavaScript framework, including React, Next.js, and many more.
 
@@ -17,19 +17,19 @@ A lightweight SDK for profanity filtering in forms. This library is designed to 
 You can install the SDK via any nodejs package manager:
 
 ```bash
-npm install profanity-validator
+npm install profanity-validator@latest
 ```
 
 ```bash
-pnpm add profanity-validator
+pnpm add profanity-validator@latest
 ```
 
 ```bash
-bun add profanity-validator
+bun add profanity-validator@latest
 ```
 
 ```bash
-yarn add profanity-validator
+yarn add profanity-validator@latest
 ```
 
 ## Examples 
