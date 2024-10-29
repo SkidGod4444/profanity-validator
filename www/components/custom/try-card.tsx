@@ -48,7 +48,11 @@ export default function TryCard() {
   } = useForm<FormData>({
     resolver: ProfanityResolver(profanityInit),
   });
-  const onSubmit = async (data: { name: string; framework: string; desc: string }) => {
+  const onSubmit = async (data: {
+    name: string;
+    framework: string;
+    desc: string;
+  }) => {
     toast(
       `Name: ${data.name}, Framework: ${data.framework}, Desc: ${data.desc}`,
     );

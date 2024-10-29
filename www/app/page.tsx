@@ -92,7 +92,7 @@ export default function Home() {
           <HeroVideoDialog
             className="dark:hidden block"
             animationStyle="top-in-bottom-out"
-            videoSrc=""
+            videoSrc="https://www.youtube.com/embed/WVCBLilL0mQ?si=cfJSBFEado_c_G1v"
             thumbnailSrc="https://i.imgur.com/KCJmPOa.png"
             thumbnailAlt="Hero Video"
           />
@@ -176,9 +176,9 @@ export default function Home() {
                 rel="noopener"
               >
                 Saidev Dhal,
-              </a>{" "}
-              Feel free to raise issue(s) & pr(s) 👻
+              </a>
             </p>
+            <p>Feel free to raise issue(s) & pr(s) 👻</p>
             <p className="text-sm leading-5 text-gray-400">
               © {new Date().getFullYear()} ProfanityValidator
             </p>

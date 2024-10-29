@@ -70,9 +70,10 @@ export default function ExamplesPage() {
               <p className="text-md py-3">
                 To integrate profanity validation with React Hook Form, <br />{" "}
                 this example uses a custom Profanity class to validate fields
-                like &quot;title,&quot; &quot;description,&quot; and &quot;tags&quot; for inappropriate
-                language on form submission, <br /> setting errors as needed and
-                allowing submission only if all fields pass validation.
+                like &quot;title,&quot; &quot;description,&quot; and
+                &quot;tags&quot; for inappropriate language on form submission,{" "}
+                <br /> setting errors as needed and allowing submission only if
+                all fields pass validation.
               </p>
               <p className="hover:underline text-blue-600">
                 <a
@@ -105,9 +106,10 @@ export default function ExamplesPage() {
               <p className="text-md py-3">
                 To integrate with React Hook Form and Zod for a
                 profanity-validated form. <br /> It uses a custom Profanity
-                validator to check fields like &quot;title,&quot; &quot;description,&quot; and
-                &quot;tags&quot; for inappropriate language, <br /> setting &quot;custom
-                errors&quot; through Zod if profanity is detected.
+                validator to check fields like &quot;title,&quot;
+                &quot;description,&quot; and &quot;tags&quot; for inappropriate
+                language, <br /> setting &quot;custom errors&quot; through Zod
+                if profanity is detected.
               </p>
               <p className="hover:underline text-blue-600">
                 <a
@@ -141,11 +143,11 @@ export default function ExamplesPage() {
                 This example demonstrates a dynamic form using ShadCN UI, where
                 fields can be added or removed <br /> and are validated for
                 profanity in real-time with debouncing. A custom Profanity class
-                checks each field&apos;s <br /> content for inappropriate language,
-                displaying error messages if any are detected. <br /> The form
-                highlights fields with profanity and allows users to address
-                issues before submitting, <br /> with notifications for both
-                successful and failed submissions.
+                checks each field&apos;s <br /> content for inappropriate
+                language, displaying error messages if any are detected. <br />{" "}
+                The form highlights fields with profanity and allows users to
+                address issues before submitting, <br /> with notifications for
+                both successful and failed submissions.
               </p>
               <p className="hover:underline text-blue-600">
                 <a
