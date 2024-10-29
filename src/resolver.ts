@@ -8,18 +8,25 @@ export const ProfanityResolver = (profanity: Profanity) => {
     await Promise.all(
       Object.entries(values).map(async ([field, value]) => {
         const validator = profanity.createValidator(field);
-        if (!validator) return;
+        if (!validator) {
+          validFields[field] = value;
+          return;
+        }
 
-        const result = await validator(String(value));
-        if (result.isValid === true) {
-          validFields[field] = value;  // Populate validFields for valid fields
-        } else {
-          errors[field] = { type: 'profanity', message: result.message };
+        try {
+          const result = await validator(String(value));
+          if (result.isValid === true) {
+            validFields[field] = value;
+          } else {
+            errors[field] = { type: 'profanity', message: result.message };
+          }
+        } catch (error) {
+          console.error(`Error validating field "${field}":`, error);
+          errors[field] = { type: 'profanity', message: 'An error occurred while validating the field' };
         }
       })
     );
 
-    return { values: validFields, errors };
+    return { values: validFields, errors: Object.keys(errors).length > 0 ? errors : {} };
   };
 };
-

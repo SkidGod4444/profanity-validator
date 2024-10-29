@@ -1,6 +1,6 @@
 # Changelog
 
-## [v1.3.1]
+## [v1.3.6]
 
 ### Fixed
 - **ProfanityResolver**: Updated the `errors` object structure in `ProfanityResolver` to align with expected test output.

@@ -29,9 +29,6 @@ const Navbar = () => {
             <Link className="hover:underline" href="/#try-it">
               Try Now
             </Link>
-            <Link className="hover:underline" href="/#intro">
-              Video Demo
-            </Link>
             <Link className="hover:underline" href="/examples">
               Examples
             </Link>

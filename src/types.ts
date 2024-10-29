@@ -9,5 +9,5 @@ export interface ProfanityConfig {
     message: React.ReactNode | string;
     detectedWords: string[];
   }
-  
+
   export type FormValues = Record<string, string>;
