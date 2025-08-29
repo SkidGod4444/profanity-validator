@@ -1,6 +1,4 @@
-# profanity-validator
-
-[![Profanity Validator](https://i.imgur.com/KCJmPOa.png)](https://www.youtube.com/watch?v=WVCBLilL0mQ) <!-- Replace with actual image path and YouTube video link -->
+[![Profanity Validator](https://github.com/user-attachments/assets/18c77256-bfe9-47d1-9375-d5de8efedaf5)](https://www.youtube.com/watch?v=WVCBLilL0mQ) <!-- Replace with actual image path and YouTube video link -->
 
 A lightweight SDK for profanity filtering in forms. This library is designed to prevent bad word spam by validating user input and throwing errors if profanity is detected. Built to be flexible, it can be integrated easily into any HTML or JavaScript framework, including React, Next.js, and many more.
 
